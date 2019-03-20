@@ -14,7 +14,7 @@ class Media : NSObject, NSCoding, Mappable{
 	var approvedForSyndication : Int?
 	var caption : String?
 	var copyright : String?
-	var mediametadata : [Media-metadata]?
+	var mediametadata : [MediaMetadata]?
 	var subtype : String?
 	var type : String?
 
@@ -23,9 +23,9 @@ class Media : NSObject, NSCoding, Mappable{
 		return Media()
 	}
 	private override init(){}
-	required init?(_ map: Map){}
+    required init?(map: Map){}
 
-	func mapping(_ map: Map)
+    func mapping(map: Map)
 	{
 		approvedForSyndication <- map["approved_for_syndication"]
 		caption <- map["caption"]
@@ -45,7 +45,7 @@ class Media : NSObject, NSCoding, Mappable{
          approvedForSyndication = aDecoder.decodeObject(forKey: "approved_for_syndication") as? Int
          caption = aDecoder.decodeObject(forKey: "caption") as? String
          copyright = aDecoder.decodeObject(forKey: "copyright") as? String
-         mediametadata = aDecoder.decodeObjectForKey("media-metadata") as? [Media-metadata]
+        mediametadata = aDecoder.decodeObject(forKey: "media-metadata") as? [MediaMetadata]
          subtype = aDecoder.decodeObject(forKey: "subtype") as? String
          type = aDecoder.decodeObject(forKey: "type") as? String
 
@@ -67,7 +67,7 @@ class Media : NSObject, NSCoding, Mappable{
 			aCoder.encodeConditionalObject(copyright, forKey: "copyright")
 		}
 		if mediametadata != nil{
-			aCoder.encodeObject(mediametadata, forKey: "media-metadata")
+            aCoder.encode(mediametadata, forKey: "media-metadata")
 		}
 		if subtype != nil{
 			aCoder.encodeConditionalObject(subtype, forKey: "subtype")

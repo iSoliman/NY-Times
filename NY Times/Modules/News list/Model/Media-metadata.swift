@@ -1,5 +1,5 @@
 //
-//	Media-metadata.swift
+//	MediaMetadata.swift
 //
 //	Create by Islam Soliman on 20/3/2019
 //	Copyright © 2019. All rights reserved.
@@ -9,7 +9,7 @@ import Foundation
 import ObjectMapper
 
 
-class Media-metadata : NSObject, NSCoding, Mappable{
+class MediaMetadata : NSObject, NSCoding, Mappable{
 
 	var format : String?
 	var height : Int?
@@ -18,12 +18,12 @@ class Media-metadata : NSObject, NSCoding, Mappable{
 
 
 	class func newInstance(map: Map) -> Mappable?{
-		return Media-metadata()
+		return MediaMetadata()
 	}
 	private override init(){}
-	required init?(_ map: Map){}
+    required init?(map: Map){}
 
-	func mapping(_ map: Map)
+    func mapping(map: Map)
 	{
 		format <- map["format"]
 		height <- map["height"]

@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dN2-PC-Glc">
                         <rect key="frame" x="0.0" y="0.0" width="164" height="140"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lx2-Y8-oel">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lx2-Y8-oel">
                                 <rect key="frame" x="0.0" y="0.0" width="164" height="140"/>
                             </imageView>
                         </subviews>

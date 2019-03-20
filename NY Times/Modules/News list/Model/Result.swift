@@ -35,10 +35,10 @@ class Result : NSObject, NSCoding, Mappable{
 	class func newInstance(map: Map) -> Mappable?{
 		return Result()
 	}
-	private override init(){}
-	required init?(_ map: Map){}
+	override init(){}
+    required init?(map: Map){}
 
-	func mapping(_ map: Map)
+    func mapping(map: Map)
 	{
 		abstractField <- map["abstract"]
 		adxKeywords <- map["adx_keywords"]
@@ -76,7 +76,7 @@ class Result : NSObject, NSCoding, Mappable{
          desFacet = aDecoder.decodeObject(forKey: "des_facet") as? [String]
          geoFacet = aDecoder.decodeObject(forKey: "geo_facet") as? String
          id = aDecoder.decodeObject(forKey: "id") as? Int
-         media = aDecoder.decodeObjectForKey("media") as? [Media]
+        media = aDecoder.decodeObject(forKey: "media") as? [Media]
          orgFacet = aDecoder.decodeObject(forKey: "org_facet") as? [String]
          perFacet = aDecoder.decodeObject(forKey: "per_facet") as? [String]
          publishedDate = aDecoder.decodeObject(forKey: "published_date") as? String
@@ -121,7 +121,7 @@ class Result : NSObject, NSCoding, Mappable{
 			aCoder.encodeConditionalObject(id, forKey: "id")
 		}
 		if media != nil{
-			aCoder.encodeObject(media, forKey: "media")
+            aCoder.encode(media, forKey: "media")
 		}
 		if orgFacet != nil{
 			aCoder.encodeConditionalObject(orgFacet, forKey: "org_facet")

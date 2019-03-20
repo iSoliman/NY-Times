@@ -13,7 +13,7 @@ class NewsListPresenterTests: XCTestCase {
     
     var service: NewsListServiceMock!
     var presenter: NewsListPresenter!
-    var scene = NewsListViewController()
+    var scene = NewsListViewMock()
     
     
     override func setUp() {
@@ -34,7 +34,16 @@ class NewsListPresenterTests: XCTestCase {
         service.responseStatus = .successWith2oItems
         presenter.fetchNews()
         
-        XCTAssert(presenter.news?.count == 20, "wrong items count of: \(presenter.news?.count)")
+        XCTAssert(presenter.news!.count == 20, "wrong items count of: \(presenter.news!.count)")
+    }
+    
+    func testFailureInFetchingNews() {
+        
+        service.responseStatus = .failure
+        presenter.fetchNews()
+        
+        XCTAssert(presenter.news == nil, "news != nil")
+        
     }
     
     

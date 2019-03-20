@@ -1,5 +1,5 @@
 //
-//	RootClass.swift
+//	NewsBaseResponse.swift
 //
 //	Create by Islam Soliman on 20/3/2019
 //	Copyright © 2019. All rights reserved.
@@ -18,12 +18,12 @@ class NewsBaseResponse : NSObject, NSCoding, Mappable{
 
 
 	class func newInstance(map: Map) -> Mappable?{
-		return RootClass()
+		return NewsBaseResponse()
 	}
 	private override init(){}
-	required init?(_ map: Map){}
+    required init?(map: Map){}
 
-	func mapping(_ map: Map)
+    func mapping(map: Map)
 	{
 		copyright <- map["copyright"]
 		numResults <- map["num_results"]
@@ -40,7 +40,7 @@ class NewsBaseResponse : NSObject, NSCoding, Mappable{
 	{
          copyright = aDecoder.decodeObject(forKey: "copyright") as? String
          numResults = aDecoder.decodeObject(forKey: "num_results") as? Int
-         results = aDecoder.decodeObjectForKey("results") as? [Result]
+        results = aDecoder.decodeObject(forKey: "results") as? [Result]
          status = aDecoder.decodeObject(forKey: "status") as? String
 
 	}
@@ -58,7 +58,7 @@ class NewsBaseResponse : NSObject, NSCoding, Mappable{
 			aCoder.encodeConditionalObject(numResults, forKey: "num_results")
 		}
 		if results != nil{
-			aCoder.encodeObject(results, forKey: "results")
+            aCoder.encode(results, forKey: "results")
 		}
 		if status != nil{
 			aCoder.encodeConditionalObject(status, forKey: "status")
